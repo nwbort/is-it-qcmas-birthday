@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Is it QCMA's Birthday?</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: Georgia, 'Times New Roman', serif;
+      transition: background-color 0.4s ease;
+    }
+
+    body.yes {
+      background-color: #1a4f2a;
+      color: #e8f5ec;
+    }
+
+    body.no {
+      background-color: #1a1a2e;
+      color: #d4d4e8;
+    }
+
+    .container {
+      text-align: center;
+      padding: 2rem;
+      max-width: 700px;
+    }
+
+    .answer {
+      font-size: clamp(5rem, 20vw, 12rem);
+      font-weight: bold;
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+
+    body.yes .answer {
+      color: #4caf73;
+    }
+
+    body.no .answer {
+      color: #5c5c8a;
+    }
+
+    .title {
+      font-size: clamp(1.1rem, 3vw, 1.6rem);
+      margin-top: 1.5rem;
+      opacity: 0.75;
+      letter-spacing: 0.03em;
+    }
+
+    .citation {
+      margin-top: 2.5rem;
+      font-size: 0.85rem;
+      opacity: 0.45;
+      font-style: italic;
+    }
+
+    .citation a {
+      color: inherit;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .date-display {
+      margin-top: 0.75rem;
+      font-size: 0.9rem;
+      opacity: 0.5;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="answer" id="answer"></div>
+    <div class="title">Is it QCMA's birthday?</div>
+    <div class="date-display" id="date-display"></div>
+    <div class="citation">
+      <em>Queensland Cane Growers' Organisation v Australian Canegrowers' Council</em> (1976) 13 ALR 475 &mdash; decided 5 March 1976
+    </div>
+  </div>
+
+  <script>
+    const now = new Date();
+    const month = now.getMonth() + 1; // 1-based
+    const day = now.getDate();
+
+    const isBirthday = month === 3 && day === 5;
+
+    document.body.classList.add(isBirthday ? 'yes' : 'no');
+    document.getElementById('answer').textContent = isBirthday ? 'YES!' : 'NO.';
+    document.getElementById('date-display').textContent =
+      now.toLocaleDateString('en-AU', { weekday: 'long', day: 'numeric', month: 'long' });
+  </script>
+</body>
+</html>
