@@ -96,8 +96,10 @@
 
     const isBirthday = month === 3 && day === 5;
 
+    const age = now.getFullYear() - 1976;
+
     document.body.classList.add(isBirthday ? 'yes' : 'no');
-    document.getElementById('answer').textContent = isBirthday ? 'YES!' : 'NO.';
+    document.getElementById('answer').textContent = isBirthday ? `QCMA turns ${age} today` : 'NO.';
     document.getElementById('date-display').textContent =
       now.toLocaleDateString('en-AU', { weekday: 'long', day: 'numeric', month: 'long' });
   </script>
